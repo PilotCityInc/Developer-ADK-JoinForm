@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="module__body">
-        <v-progress-linear color="grey" height="2" value="100" buffer-value="100" stream />
+        <v-progress-linear color="#dedede" height="2" value="100" buffer-value="100" stream />
         <div class="module__pagination">
           <div v-for="page in subpages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />
@@ -87,12 +87,12 @@
   </v-container>
 </template>
 <style lang="scss">
-html,
-body {
-  font-family: 'Raleway';
-  font-size: 16px;
-  width: 100%;
-  height: 100%;
+.module {
+  // background-color: #404142;
+
+  &__body {
+    // margin-top: 0px;
+  }
 }
 .module__menu {
   .v-color-picker {
@@ -103,7 +103,7 @@ body {
 }
 </style>
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, toRefs } from '@vue/composition-api';
+import { computed, reactive, ref, toRefs } from '@vue/composition-api';
 import '@/styles/module.scss';
 import * as Module from './components';
 
@@ -118,8 +118,18 @@ interface Color {
   selectedColor: string;
   getColor: string;
 }
-export default defineComponent({
-  name: 'Microapp',
+interface Config {
+  description: string;
+  instruct: string[];
+  deletable: boolean;
+  group: string[];
+  deliverable: boolean;
+  notifications: string;
+  reflection: string[];
+  access: string;
+}
+export default {
+  name: 'ModuleName',
   components: {
     'module-monitor': Module.Monitor,
     'module-setup': Module.Setup,
@@ -147,13 +157,18 @@ export default defineComponent({
         return color.selectedColor.substring(0, 7);
       })
     });
+    const config = ref({
+      description: '',
+      instruct: ['']
+    });
     const menu = ref(false);
     return {
       ...toRefs(color as any),
       ...toRefs(page as any),
+      config,
       moduleName,
       menu
     };
   }
-});
+};
 </script>
