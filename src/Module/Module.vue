@@ -46,7 +46,7 @@
     <div class="module__container" :style="{ 'border-color': getColor }">
       <div class="module__title">
         <div class="module__image rounded-circle">
-          <v-icon light x-large :color="selectedColor">mdi-cog</v-icon>
+          <v-icon light x-large :color="selectedColor">mdi-fishbowl</v-icon>
         </div>
         <div class="module__header text-md-h5 text-sm-subtitle-1 d-flex align-center">
           <input :value="moduleName" type="text" class="module__header-text" />
@@ -60,16 +60,17 @@
         </div>
       </div>
       <div class="module__body">
-        <v-progress-linear color="#3c9dcd" height="2" value="75" buffer-value="95" stream />
+        <v-progress-linear color="grey" height="2" value="100" buffer-value="100" stream />
         <div class="module__pagination">
           <div v-for="page in subpages" :key="page" :class="{ active: currentPage == page }">
             <div class="module__pagination-button--active" />
             <v-btn
               :ripple="false"
               class="module__pagination-button elevation-0"
-              color="transparent"
+              color="#ffffff"
               height="40"
               small
+              depressed
               @click="currentPage = page"
             >
               {{ page }}
@@ -126,7 +127,7 @@ export default defineComponent({
     'module-preview': Module.Default
   },
   setup() {
-    const moduleName = ref('Module Name');
+    const moduleName = ref('Get Started');
     const page: Page = reactive({
       subpages: ['Setup', 'Presets', 'Monitor'],
       currentPage: 'Setup',
@@ -141,7 +142,7 @@ export default defineComponent({
         ['#eda1bf', '#fec34b', '#bdbdbd'],
         ['#ae90b0', '#f79961', '#000000']
       ],
-      selectedColor: '#bdbdbd',
+      selectedColor: '#eda1bf',
       getColor: computed(() => {
         return color.selectedColor.substring(0, 7);
       })
