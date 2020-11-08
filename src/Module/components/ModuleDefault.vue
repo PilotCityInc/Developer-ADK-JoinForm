@@ -34,17 +34,64 @@
       </v-expansion-panels>
     </div>
     <div class="module-default__get-started">
-      <!-- INTERNSHIP INTEREST -->
+      <!-- LOCATION REQUIREMENTS -->
       <br />
       <br />
       <span class="module-default__question-title"
-        >What's your interest level in an internship?
+        >Are you from any of the below required city(s) or county(s) required by the employer
+        organizer?
       </span>
-      <v-radio-group>
-        <v-radio hide-details dense label="Highly Interested"></v-radio>
-        <v-radio hide-details dense label="Interested"></v-radio>
-        <v-radio hide-details dense label="Not Interested"></v-radio>
-      </v-radio-group>
+      <v-checkbox hide-details label="San Leandro"></v-checkbox>
+      <v-checkbox hide-details label="Oakland"></v-checkbox>
+      <v-checkbox hide-details label="Berkeley"></v-checkbox>
+      <!-- Birthdate - CONNECT TO STUDENT PORTFOLIO PROFILE -->
+      <br />
+      <br />
+      <v-menu
+        ref="menu"
+        :value="false"
+        transition="scale-transition"
+        :close-on-content-click="false"
+        offset-y
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="date"
+              :error-messages="errors"
+              label="Birthdate"
+              outlined
+              readonly
+              v-bind="attrs"
+              v-on="on"
+            ></v-text-field>
+          </validation-provider>
+        </template>
+        <v-date-picker
+          ref="picker"
+          v-model="date"
+          :max="new Date().toISOString().substr(0, 10)"
+          min="1950-01-01"
+          @input="menu = false"
+        ></v-date-picker>
+      </v-menu>
+      <!-- SKILLS REQUIREMENTS -->
+      <br />
+      <br />
+      <span class="module-default__question-title"
+        >Do you know any of the required skills by the employer organizer?
+      </span>
+      <v-checkbox hide-details label="Unity 3D"></v-checkbox>
+      <v-checkbox hide-details label="Autodesk Fusion 360"></v-checkbox>
+      <!-- REQUIRED TECH -->
+      <br />
+      <br />
+      <span class="module-default__question-title"
+        >Do you have access of any of the required technology or tools?
+      </span>
+      <v-checkbox hide-details label="DJI Drone"></v-checkbox>
+      <v-checkbox hide-details label="Arduino"></v-checkbox>
       <!-- PAID OR UNPAID -->
       <br />
       <br />
@@ -63,13 +110,6 @@
         <v-radio hide-details dense label="I'm not sure"></v-radio>
         <v-radio hide-details dense label="Decline to answer"></v-radio>
       </v-radio-group>
-      <!-- PAID OR UNPAID -->
-      <br />
-      <br />
-      <span class="module-default__question-title">Do you have a resume?</span>
-      <v-checkbox hide-details label="Yes"></v-checkbox>
-      <v-checkbox hide-details label="No"></v-checkbox>
-      <v-checkbox hide-details label="LinkedIn.com Resume"></v-checkbox>
       <!-- POST-SECONDARY PLANS -->
       <br />
       <br />
@@ -86,8 +126,29 @@
         multiple
         outlined
       ></v-select>
-      <!-- TRANSPORT -->
+
+      <!-- INTERNSHIP INTEREST -->
+      <!-- <br />
       <br />
+      <span class="module-default__question-title"
+        >What's your interest level in an internship?
+      </span>
+      <v-radio-group>
+        <v-radio hide-details dense label="Highly Interested"></v-radio>
+        <v-radio hide-details dense label="Interested"></v-radio>
+        <v-radio hide-details dense label="Not Interested"></v-radio>
+      </v-radio-group> -->
+
+      <!-- PAID OR UNPAID -->
+      <!-- <br />
+      <br />
+      <span class="module-default__question-title">Do you have a resume?</span>
+      <v-checkbox hide-details label="Yes"></v-checkbox>
+      <v-checkbox hide-details label="No"></v-checkbox>
+      <v-checkbox hide-details label="LinkedIn.com Resume"></v-checkbox> -->
+
+      <!-- TRANSPORT -->
+      <!-- <br />
       <br />
       <span class="module-default__question-title">What is your primary mode of transport?</span>
       <v-radio-group>
@@ -96,9 +157,9 @@
         <v-radio hide-details dense label="Public transit"></v-radio>
         <v-radio hide-details dense label="Ridesharing"></v-radio>
         <v-radio hide-details dense label="Decline to answer"></v-radio>
-      </v-radio-group>
+      </v-radio-group> -->
       <!-- TECH OWNERSHIP -->
-      <br />
+      <!-- <br />
       <br />
       <span class="module-default__question-title">What technology do you currently own?</span>
       <br />
@@ -110,9 +171,9 @@
         label="What technology do you currently own?"
         multiple
         outlined
-      ></v-select>
+      ></v-select> -->
       <!-- TECH OWNERSHIP -->
-      <br />
+      <!-- <br />
       <br />
       <span class="module-default__question-title">How do you typically get on the internet?</span>
       <br />
@@ -124,7 +185,7 @@
         label="How do you typically get on the internet?"
         multiple
         outlined
-      ></v-select>
+      ></v-select> -->
       <!-- PATHWAY INTEREST -->
       <br />
       <br />
@@ -466,6 +527,7 @@ export default {
     padding: 0px;
   }
   &__get-started {
+    max-width: 80%;
   }
   &__question-title {
     font-family: Raleway;
