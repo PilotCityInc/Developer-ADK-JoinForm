@@ -66,7 +66,12 @@
             <div class="module__pagination-button--active" />
             <v-btn
               :ripple="false"
+<<<<<<< HEAD
               class="module__pagination-button elevation-0"
+=======
+              class="module__pagination-button"
+              elevation="0"
+>>>>>>> aeaf0445cf37cbebce46cacc17de2737f118b64e
               color="#ffffff"
               height="40"
               small
@@ -87,12 +92,12 @@
   </v-container>
 </template>
 <style lang="scss">
-.module {
-  // background-color: #404142;
-
-  &__body {
-    // margin-top: 0px;
-  }
+html,
+body {
+  font-family: 'Raleway';
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
 }
 .module__menu {
   .v-color-picker {
