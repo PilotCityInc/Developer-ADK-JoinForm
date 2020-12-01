@@ -155,6 +155,9 @@
         <v-radio hide-details dense label="Yes"></v-radio>
         <v-radio hide-details dense label="No"></v-radio>
       </v-radio-group> -->
+      <!-- NO SETUP NECESSARY / COMMENT OUT IF SETUP IS NECESSARY -->
+      <!-- <div class="module-setup__none">No setup necessary</div> -->
+      <!-- ENTER CONTENT HERE -->
     </div>
   </v-container>
 </template>
@@ -165,9 +168,9 @@ import { ref } from '@vue/composition-api';
 export default {
   name: 'ModuleSetup',
   setup() {
-    const setupInstructions = ref(['']);
+    const setup = ref({});
     return {
-      setupInstructions
+      setup
     };
   }
 };
@@ -181,6 +184,17 @@ export default {
     font-weight: 700;
     line-height: 30px;
     // margin-top: 25px;
+  }
+  &__none {
+    border-radius: 5px;
+    // border: 1px solid #dedede;
+    height: 100px;
+    text-align: center;
+    background-color: #dedede;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 18px;
+    padding-top: 35px;
   }
 }
 </style>

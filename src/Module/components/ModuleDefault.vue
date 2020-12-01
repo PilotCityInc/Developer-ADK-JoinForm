@@ -33,7 +33,15 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
-    <div class="module-default__get-started">
+    <v-progress-linear
+      class="module-default__collapse-divider"
+      color="#dedede"
+      height="2"
+      value="100"
+      buffer-value="100"
+      stream
+    />
+    <div class="module-edit__container">
       <!-- LOCATION REQUIREMENTS -->
       <br />
       <br />
@@ -472,6 +480,9 @@
       </div>
       <v-btn large depressed outlined>CHECKOUT (1 Token)</v-btn>
       <!-- END -->
+      <!-- ENTER CONTENT HERE -->
+      <!-- DESIGN YOUR ACTIVITY HERE / COMMENT OUT WHEN YOU'VE STARTED DESIGNING -->
+      <!-- <div class="module-default__none">Design your activity here</div> -->
     </div>
   </v-container>
 </template>
@@ -522,6 +533,38 @@ export default {
 
 <style lang="scss">
 .module-default {
+  &__none {
+    border-radius: 5px;
+    // border: 1px solid #dedede;
+    height: 100px;
+    text-align: center;
+    background-color: #dedede;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 18px;
+    padding-top: 35px;
+  }
+
+  &__collapse-divider {
+    margin-top: 15px;
+    margin-bottom: 75px;
+    margin-right: none;
+    margin-left: none;
+    padding-right: none;
+    padding-left: none;
+    width: 100%;
+  }
+
+  &__collapse-title {
+    color: #dedede;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-size: 13px;
+    //  text-uppercase font-weight-bold text-subtitle-2 text-center
+  }
+
   &__container {
     margin-top: 0px;
     padding: 0px;
